@@ -40,10 +40,9 @@ def run_experiment(N: int, m: int) -> ExperimentResult:
 
 
 if __name__ == '__main__':
-    Ns = [100, 1_000, 10_000, 100_000]
+    Ns = [100, 1_000, 10_000, 100_000, 1_000_000]
     m = 100
-    print('{:>10} {:>10} {:>10} {:>10} {:>10}'.format('N', 'm', 'ops.', 'mean µs', 'ops./µs'))
+    print('{:>10} {:>10} {:>10} {:>10} {:>10} {:>10}'.format('N', 'm', 'ops.', 'mean µs', 'ops./µs', 'µs/ops.'))
     for N in Ns:
         result = run_experiment(N, m)
-        print(f'{N:10} {m:10} {result.ops:10} {result.mean_delta.microseconds:10} {result.ops / result.mean_delta.microseconds:10.3f}')
-
+        print(f'{N:10} {m:10} {result.ops:10} {result.mean_delta.microseconds:10} {result.ops / result.mean_delta.microseconds:10.3f} {result.mean_delta.microseconds/result.ops:10.3f}')
